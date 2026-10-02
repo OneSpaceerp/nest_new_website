@@ -691,14 +691,6 @@ export const footer = {
         {
           "label": "Contact",
           "href": "/#contact"
-        },
-        {
-          "label": "PRIVACY",
-          "href": "/privacy"
-        },
-        {
-          "label": "TERMS",
-          "href": "/terms"
         }
       ]
     }
