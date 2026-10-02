@@ -1,0 +1,27 @@
+// Local-only preview and regression checks. Never connects to SMTP.
+const fs = require('node:fs');
+const path = require('node:path');
+const assert = require('node:assert/strict');
+const ts = require('typescript');
+require.extensions['.ts'] = (module, filename) => module._compile(ts.transpileModule(fs.readFileSync(filename, 'utf8'), { compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true } }).outputText, filename);
+const { inquiryConfirmation } = require('../src/lib/email/inquiry-confirmation.ts');
+const { serializeEmail } = require('../src/lib/email/mime.ts');
+const logo = require('../src/lib/email/nest-logo.json');
+const sample = { name: 'Alex', company: 'Your company', products: ['onespace', 'nestcloud'], timeline: 'Within 1–3 months', message: 'We want to connect our finance, inventory, and sales teams, with a reliable cloud foundation as we grow.' };
+const content = inquiryConfirmation(sample);
+assert.ok(content.html.includes('OneSpace ERP · NestCloud'));
+assert.ok(content.text.includes('Within 1–3 months'));
+const unsafe = inquiryConfirmation({ ...sample, name: '<script>alert(1)</script>', message: '<img src=x onerror=alert(1)>\nSecond line & more' });
+assert.ok(!unsafe.html.includes('<script>'));
+assert.ok(unsafe.html.includes('&lt;img src=x onerror=alert(1)&gt;<br>Second line &amp; more'));
+assert.throws(() => serializeEmail('contact@nsd-eg.com', 'bad@example.com\r\nBcc: other@example.com', 'Test', content));
+const mime = serializeEmail('contact@nsd-eg.com', 'client@example.com', 'We received your Nest enquiry', content);
+assert.ok(mime.includes('multipart/alternative'));
+assert.ok(mime.includes('Content-ID: <nest-logo>'));
+assert.ok(!mime.includes('\r\n.\r\n'));
+const output = path.resolve(__dirname, '../email-preview');
+fs.mkdirSync(output, { recursive: true });
+fs.writeFileSync(path.join(output, 'confirmation.html'), content.html.replace('cid:nest-logo', `data:image/png;base64,${logo.base64}`));
+fs.writeFileSync(path.join(output, 'confirmation.eml'), mime);
+fs.writeFileSync(path.join(output, 'plain-text.eml'), serializeEmail('contact@nsd-eg.com', 'inquiry@nsd-eg.com', 'Website enquiry from أحمد', { text: 'Test\n.\nأهلاً' }));
+console.log('Email safety checks passed. Preview generated in email-preview. No emails sent.');
