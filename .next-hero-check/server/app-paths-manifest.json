@@ -1,0 +1,17 @@
+{
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/page": "app/page.js",
+  "/digital-marketing/page": "app/digital-marketing/page.js",
+  "/about/page": "app/about/page.js",
+  "/infrastructure/page": "app/infrastructure/page.js",
+  "/mobile-apps/page": "app/mobile-apps/page.js",
+  "/terms/page": "app/terms/page.js",
+  "/nestcloud/page": "app/nestcloud/page.js",
+  "/miravoice/page": "app/miravoice/page.js",
+  "/web-development/page": "app/web-development/page.js",
+  "/onespace/page": "app/onespace/page.js",
+  "/onespace/[slug]/page": "app/onespace/[slug]/page.js",
+  "/privacy/page": "app/privacy/page.js"
+}

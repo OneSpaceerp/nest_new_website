@@ -1,0 +1,90 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace/erpnext",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace/industries",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace/implementation",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace/integrations",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/onespace/support",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/miravoice",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/nestcloud",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/web-development",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/mobile-apps",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/digital-marketing",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/infrastructure",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/terms",
+      "status": 200,
+      "hasContent": true
+    },
+    {
+      "route": "/sitemap.xml",
+      "status": 200,
+      "hasContent": true
+    }
+  ],
+  "unknownRoute": 404
+}

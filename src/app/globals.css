@@ -1,0 +1,431 @@
+@import "tailwindcss";
+@import "./components.css";
+@import "./stories.css";
+
+/* ==========================================================================
+   Design tokens — every value sampled from the reference recording.
+   See docs/DESIGN-AUDIT.md for provenance.
+   ========================================================================== */
+
+@theme {
+  /* Neutrals. Note: no pure white, no pure black anywhere. Everything
+     carries a warm bias — that is what makes the palette read as expensive. */
+  --color-ink: #221e1b;
+  --color-ink-strong: #2a2522;
+  --color-plum: #40383e;
+  --color-warm: #e0dbd8;
+  --color-card: #eee9e6;
+  --color-chip: #f0ebea;
+  --color-rail: #ccc7c4;
+  --color-cream: #f7f2ef;
+  --color-pill: #fdfbf7;
+  --color-on-dark: #d5d0cb;
+  --color-accent: #87ab91; /* "step complete" green — semantic, not brand */
+
+  /* Brand accent.
+     #02C8F0 is the company cyan (same value as the logo). It only reaches
+     1.80:1 on the cream background, so it fails even the large-text threshold
+     and cannot be used for type on light surfaces. It is excellent on the dark
+     ones (5.68:1 on plum, 8.29:1 on ink).
+     --color-brand-ink is the same hue darkened until it clears AA 4.5:1 on
+     every light surface in the palette (cream 5.61, card 5.17, warm 4.54,
+     chip 5.28). Use -brand on dark, -brand-ink on light. */
+  /* Footer black. Deliberately not #000: the whole palette carries a warm
+     bias and a pure black would be the one jarring note in it. This also sits
+     a step below --color-ink (#221E1B), so the closing CTA card still reads
+     as a raised panel against the footer rather than merging into it. */
+  --color-night: #13100f;
+
+  --color-brand: #02c8f0;
+  --color-brand-ink: #016a7f;
+  --color-brand-ink-hover: #015363;
+
+  /* Radii — nothing on the page is sharp. */
+  --radius-sm: 20px;
+  --radius-md: 24px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+  --radius-full: 999px;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Three registers. Display carries the character, body carries the reading,
+     mono carries the technical labelling. */
+  --font-display: var(--ff-grotesk), "Segoe UI", system-ui, sans-serif;
+  --font-sans: var(--ff-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono-stack: var(--ff-mono), ui-monospace, "Cascadia Mono",
+    Menlo, Consolas, monospace;
+}
+
+:root {
+  --container: 1512px;
+  --gutter: 32px;
+  --section-y: clamp(88px, 11vw, 160px);
+
+  --d-fast: 180ms;
+  --d-base: 260ms;
+  --d-slow: 700ms;
+
+  /* Driven by the scroll-linked background controller. */
+  --page-bg: #e0dbd8;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto; /* Lenis owns scrolling */
+}
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--color-ink-strong);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+  transition: background-color 120ms linear;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: var(--color-cream);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink-strong);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Layout primitives
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --gutter: 20px;
+  }
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+/* ==========================================================================
+   Type scale.
+
+   Rebuilt on Axentor's rhythm — a tighter display ramp, heavier display
+   weight, and a markedly more generous body leading (1.6 rather than 1.5),
+   which is most of why their long copy reads so easily. Display and headings
+   use Space Grotesk; body uses Inter; eyebrows, labels and spec keys use
+   JetBrains Mono, so the technical register lives in the small type.
+   ========================================================================== */
+
+.t-display,
+.t-statement,
+.t-hero,
+.t-h2,
+.t-h3,
+.t-step {
+  font-family: var(--font-display);
+  font-feature-settings: "ss01", "ss03";
+}
+
+.t-display {
+  font-size: clamp(2.75rem, 7.6vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.t-statement {
+  font-size: clamp(2rem, 5.6vw, 5rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.025em;
+}
+
+.t-hero {
+  font-size: clamp(2.25rem, 4.9vw, 4rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.t-h2 {
+  font-size: clamp(1.875rem, 2.9vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.t-h3 {
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+}
+
+.t-step {
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+
+.t-lead {
+  font-size: clamp(1.0625rem, 1.3vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+.t-body {
+  font-size: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* Eyebrows are mono now, not semibold sans. This single change does more for
+   the "technical" read than anything at display size. */
+.t-eyebrow {
+  font-family: var(--font-mono-stack);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.t-mono {
+  font-family: var(--font-mono-stack);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.t-muted {
+  color: color-mix(in srgb, var(--color-ink-strong) 62%, transparent);
+}
+
+/* Eyebrows carry the accent. The compound selector is deliberate: most
+   eyebrows are written `t-eyebrow t-muted`, and a bare `.t-eyebrow` rule would
+   lose to `.t-muted` on source order. */
+.t-eyebrow,
+.t-eyebrow.t-muted {
+  color: var(--color-brand-ink);
+}
+
+/* Accented punctuation — the full stop at the end of a heading, and the
+   arrows on inline links. Used sparingly: one accent per heading, never on a
+   whole word, so the colour stays a punctuation mark rather than emphasis. */
+.accent {
+  color: var(--color-brand-ink);
+}
+
+/* On the dark sections the full-strength brand cyan is both legible and
+   correct; the darkened ink shade would disappear. */
+.statement .t-eyebrow,
+.statement .t-eyebrow.t-muted,
+.statement .accent,
+.ctacard__card .accent {
+  color: var(--color-brand);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 0;
+  border-radius: var(--radius-full);
+  padding: 0.9rem 1.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform var(--d-base) var(--ease-out-expo),
+    background-color var(--d-base) var(--ease-out-expo),
+    color var(--d-base) var(--ease-out-expo),
+    box-shadow var(--d-base) var(--ease-out-expo);
+  will-change: transform;
+}
+
+/* Primary action: brand cyan fill, white label.
+ *
+ * NOTE: white on #02C8F0 measures 2.00:1 — it fails WCAG AA (4.5:1) and the
+ * large-text threshold (3:1). The fill is also only 1.80:1 against the cream
+ * page, so the button's own edge is low contrast. This is the requested
+ * treatment and is kept deliberately. To make it pass, either:
+ *   - keep the fill, set `color: var(--color-ink)`   -> 8.29:1, or
+ *   - keep the white label, set fill to #017A92      -> 5.00:1.
+ * The resting shadow defines the button's edge against light backgrounds. */
+.btn-primary {
+  background: var(--color-brand);
+  color: #fff;
+  box-shadow:
+    0 1px 2px rgb(2 90 110 / 0.22),
+    0 6px 16px -10px rgb(2 90 110 / 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: #02b4d8;
+  box-shadow: 0 10px 28px -12px rgb(2 90 110 / 0.7);
+}
+
+/* The same action sitting on the dark CTA card. Cyan reads 8.29:1 against that
+   card, so the button is well separated there; only the white label carries
+   the contrast problem noted above. */
+.btn-inverse {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+.btn-inverse:hover {
+  transform: translateY(-2px);
+  background: #02b4d8;
+  box-shadow: 0 10px 28px -12px rgb(0 0 0 / 0.45);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink-strong);
+  box-shadow: inset 0 0 0 1px var(--color-rail);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--color-pill) 70%, transparent);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 90ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ==========================================================================
+   Chip
+   ========================================================================== */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--color-chip);
+  box-shadow: inset 0 0 0 1px var(--color-rail);
+  padding: 0.6rem 1.05rem;
+  font-size: 0.9375rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-ink-strong) 78%, transparent);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Grain — the single most important texture in the reference. Every image
+   surface carries it at identical opacity, which is what unifies procedural
+   art with photographic art.
+   ========================================================================== */
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.42;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   Reveal — entrance animation primitive. Elements start hidden and are
+   released by IntersectionObserver. Guarded so no-JS still shows content.
+   ========================================================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--d-slow) var(--ease-out-expo),
+    transform var(--d-slow) var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+html.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================================
+   Reduced motion — the page must be fully legible with zero animation.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

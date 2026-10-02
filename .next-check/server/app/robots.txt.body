@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://nsd-eg.com
+Sitemap: https://nsd-eg.com/sitemap.xml
