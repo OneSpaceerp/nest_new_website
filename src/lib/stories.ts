@@ -1,6 +1,6 @@
 export type Story = {
   slug: string; eyebrow: string; title: string; intro: string;
-  image: "onespace" | "voice" | "cloud" | "digital";
+  image: "onespace" | "voice" | "cloud" | "digital" | "web-development" | "digital-marketing" | "infrastructure";
   opening: { title: string; body: string };
   chapters: { title: string; body: string; points: string[] }[];
   outcomes: string[];
@@ -12,7 +12,7 @@ export const serviceStories: Story[] = [
   {
     slug: "web-development", eyebrow: "WEBSITES & WEB APPLICATIONS",
     title: "A better experience. From the first click.",
-    intro: "Your website starts a conversation. Your application helps someone finish a job. We design and build both around the people using them—and the business behind them.", image: "digital",
+    intro: "Your website starts a conversation. Your application helps someone finish a job. We design and build both around the people using them—and the business behind them.", image: "web-development",
     opening: { title: "An interested visitor should know what to do next.", body: "A confusing menu, a slow product page, or a form that asks too much can interrupt a promising conversation. Inside a business, the same friction appears as repeated data entry and awkward workarounds. We start with the journey: what someone needs, what gets in their way, and what a successful visit looks like." },
     chapters: [
       { title: "Give the story a clear structure", body: "We turn your services, products, and expertise into an understandable route through the site. Content and interface take shape together, so the most important message has the space it needs.", points: ["Audience journeys, page structure, and content priorities", "Responsive layouts with accessible navigation and forms", "Arabic and English experiences when included in the brief"] },
@@ -45,7 +45,7 @@ export const serviceStories: Story[] = [
   {
     slug: "digital-marketing", eyebrow: "STRATEGY / CONTENT / CREATIVE",
     title: "Be understood. Then be chosen.",
-    intro: "Bring your positioning, content, campaigns, and website into one customer journey. Build attention around a clear offer—and measure the actions that matter to your business.", image: "digital",
+    intro: "Bring your positioning, content, campaigns, and website into one customer journey. Build attention around a clear offer—and measure the actions that matter to your business.", image: "digital-marketing",
     opening: { title: "Attention is only the beginning.", body: "A campaign can attract the right person and still lose them on an unclear landing page. A beautiful feed can leave customers unsure what you offer. We look at the whole journey, from discovery to enquiry, and connect the message to the experience that follows it." },
     chapters: [
       { title: "Understand who needs to hear from you", body: "We review your offer, audience questions, existing channels, and competitors. The result is a focused message and channel plan, with an agreed definition of a useful enquiry or conversion.", points: ["Positioning and audience research", "Channel and content audits", "Campaign objectives, budgets, and measurement plan"] },
@@ -61,7 +61,7 @@ export const serviceStories: Story[] = [
   {
     slug: "infrastructure", eyebrow: "NETWORKS & BUSINESS CONTINUITY",
     title: "Give everyday work a dependable foundation.",
-    intro: "Connect your offices, systems, and people with infrastructure designed around how work actually happens—and what the business needs when something goes wrong.", image: "cloud",
+    intro: "Connect your offices, systems, and people with infrastructure designed around how work actually happens—and what the business needs when something goes wrong.", image: "infrastructure",
     opening: { title: "A small interruption can travel a long way.", body: "When the network slows down, calls suffer, transactions wait, and teams create workarounds. We map the dependencies behind those symptoms: connectivity, equipment, access, applications, and the people responsible for each layer." },
     chapters: [
       { title: "Understand the environment", body: "We review sites, user groups, workloads, coverage, and existing equipment. Critical services receive clear availability and recovery requirements so the design reflects business priorities.", points: ["Network and equipment inventory", "Office connectivity and wireless coverage assessment", "Dependency mapping and capacity planning"] },
@@ -109,6 +109,9 @@ export const serviceStories: Story[] = [
 ];
 
 export const illustrationAlts = {
+  "web-development": "A responsive website displayed on desktop, tablet, and phone, connected to an integration hub.",
+  "digital-marketing": "Campaign creative, a megaphone, audience markers, and analytics connected by a cyan path.",
+  infrastructure: "Office buildings, a network switch, server rack, and protected backup storage connected by cyan cables.",
   onespace: "A miniature warehouse, ledger, and production station connected through a cyan hub.",
   voice: "A miniature business phone and offices connected by a cyan ribbon.",
   cloud: "Miniature server cabinets and a backup capsule connected beneath a glass cloud.",
