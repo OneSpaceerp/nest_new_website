@@ -1,0 +1,56 @@
+[
+  {
+    "id": "01-nest",
+    "label": "Nest · Brand introduction",
+    "eyebrow": "ONE PARTNER. A CONNECTED BUSINESS.",
+    "headline": "Make room for what’s next.",
+    "body": "ERP, communications, cloud and digital experiences. Connected through Nest.",
+    "cta": "Start a conversation",
+    "website": "nsd-eg.com"
+  },
+  {
+    "id": "02-onespace",
+    "label": "OneSpace · Business operations",
+    "eyebrow": "ONESPACE / ERP SOLUTIONS",
+    "headline": "One business. One clearer picture.",
+    "body": "Bring finance, sales and inventory into a connected way of working.",
+    "cta": "Explore OneSpace ERP",
+    "website": "nsd-eg.com/onespace"
+  },
+  {
+    "id": "03-miravoice",
+    "label": "MiraVoice · Communications",
+    "eyebrow": "MIRAVOICE / BUSINESS COMMUNICATIONS",
+    "headline": "Every conversation counts.",
+    "body": "Connect the people calling your business with the team ready to help.",
+    "cta": "Let’s talk about your calls",
+    "website": "nsd-eg.com/miravoice"
+  },
+  {
+    "id": "04-nestcloud",
+    "label": "NestCloud · Cloud infrastructure",
+    "eyebrow": "NESTCLOUD / CLOUD & HOSTING",
+    "headline": "Room to grow. Space to work.",
+    "body": "Give your applications a cloud foundation built around your business needs.",
+    "cta": "Find your cloud setup",
+    "website": "nsd-eg.com/nestcloud"
+  },
+  {
+    "id": "05-digital",
+    "label": "Digital · Web development",
+    "eyebrow": "NEST / WEB DEVELOPMENT",
+    "headline": "Your next first impression.",
+    "body": "A website should make your business easier to understand, explore and choose.",
+    "cta": "Build your next website",
+    "website": "nsd-eg.com/web-development"
+  },
+  {
+    "id": "06-marketing",
+    "label": "Growth · Digital marketing",
+    "eyebrow": "NEST / DIGITAL MARKETING",
+    "headline": "Give your story somewhere to go.",
+    "body": "Connect your message, content and campaigns around a clear business goal.",
+    "cta": "Plan your next campaign",
+    "website": "nsd-eg.com/digital-marketing"
+  }
+]

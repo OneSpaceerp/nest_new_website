@@ -25,8 +25,8 @@ export function inquiryConfirmation(details: ConfirmationDetails) {
 <!--[if mso]><table role="presentation" width="600"><tr><td><![endif]-->
 <table role="presentation" width="100%" style="max-width:600px;background:#f7f2ef;border-radius:24px;">
 <tr><td class="pad" style="padding:36px 40px 28px;border-top:5px solid #02c8f0;">
-<a href="https://nsd-eg.com" style="text-decoration:none;"><img src="cid:nest-logo" width="120" height="34" alt="Nest" style="display:block;border:0;width:120px;height:34px;color:#016a7f;font-size:28px;font-weight:bold;"></a>
-<p style="margin:10px 0 0;font-size:11px;letter-spacing:1px;color:#625b55;">SOFTWARE DEVELOPMENT</p></td></tr>
+<a href="https://nsd-eg.com" style="text-decoration:none;"><img src="cid:nest-logo" width="180" height="71" alt="Nest Software Development" style="display:block;border:0;width:180px;height:71px;max-width:100%;color:#02C8F0;font-size:18px;font-weight:bold;"></a>
+</td></tr>
 <tr><td class="pad" style="padding:8px 40px 30px;">
 <p style="margin:0 0 18px;font:11px/1.6 'Courier New',monospace;letter-spacing:2px;color:#016a7f;">YOUR NEXT CHAPTER STARTS HERE</p>
 <h1 class="headline" style="margin:0 0 26px;font-size:46px;line-height:1.08;letter-spacing:-1.8px;font-weight:700;color:#221e1b;">Great things start<br>with a conversation<span style="color:#02c8f0;">.</span></h1>
