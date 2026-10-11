@@ -8,6 +8,7 @@
 .story-hero .story-actions--top {margin-bottom:0;}
 .onespace-nav { display:flex; align-items:center; gap:28px; padding:20px 0; border-block:1px solid var(--color-rail); margin:0 0 60px; }
 .onespace-nav__brand {font-family:var(--font-display);font-size:24px;font-weight:700;line-height:1.1;flex-shrink:0;}
+.onespace-nav__brand img {display:block;width:124px;height:auto;}
 .onespace-nav__brand span {display:block;font-family:var(--font-sans);font-size:11px;letter-spacing:.12em;font-weight:400;margin-top:5px;text-transform:uppercase;}
 .onespace-nav__links {display:flex;gap:22px;flex:1;justify-content:center;flex-wrap:wrap;}
 .onespace-nav__links a {font-size:13px;padding:8px 0;border-bottom:2px solid transparent;}

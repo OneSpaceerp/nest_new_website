@@ -1549,6 +1549,12 @@
 .footer__eco-logo[src*="nestcloud-color-dark"],
 .about-product__logo img[src*="nestcloud-color-dark"] { mix-blend-mode: lighten; }
 
+/* Give the nestCloud wordmark a quieter presence across brand placements. */
+img[src*="nestcloud-color-"] { scale: 0.85; transform-origin: left center; }
+img[src*="nestcloud-color-light"] { mix-blend-mode: multiply; }
+.art__logo img[src*="nestcloud-color-"],
+.about-product__logo img[src*="nestcloud-color-"] { transform-origin: center; }
+
 .footer__eco-caption {
   font-family: var(--font-mono-stack);
   font-size: 0.6875rem;

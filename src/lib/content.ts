@@ -300,7 +300,7 @@ export const ecosystem = {
       "slug": "nestcloud",
       "name": "NestCloud",
       "href": "/nestcloud",
-      "logo": "/brands_logo/nestcloud-color-light.png",
+      "logo": "/brands_logo/nestcloud-color-light-v2.png",
       "title": "A cloud home with a plan behind it",
       "desc": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. NestCloud makes the operational details part of the conversation.",
       "specs": [
@@ -442,7 +442,7 @@ export const miravoice = {
 export const nestcloud = {
   "title": "NestCloud",
   "eyebrow": "INFRASTRUCTURE",
-  "logo": "/brands_logo/nestcloud-color-light.png",
+  "logo": "/brands_logo/nestcloud-color-light-v2.png",
   "intro": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. NestCloud makes the operational details part of the conversation.",
   "status": "Capacity, continuity, and support—defined around your workload.",
   "features": [
@@ -528,7 +528,7 @@ export const about = {
     },
     {
       "name": "NestCloud",
-      "logo": "/brands_logo/nestcloud-color-dark.png",
+      "logo": "/brands_logo/nestcloud-color-dark-v2.png",
       "kicker": "HOSTING & CONTINUITY",
       "title": "A cloud home with a plan behind it.",
       "body": "NestCloud gives websites, applications, and business systems a managed home with clear capacity, monitoring, backups, maintenance, and recovery responsibilities.",
@@ -635,8 +635,8 @@ export const ecosystemRow = {
     {
       "name": "NestCloud",
       "href": "/nestcloud",
-      "logo": "/brands_logo/nestcloud-color-dark.png",
-      "ratio": 5.181347150259067,
+      "logo": "/brands_logo/nestcloud-color-dark-v2.png",
+      "ratio": 5.235602094240837,
       "caption": "Cloud infrastructure"
     },
     {
