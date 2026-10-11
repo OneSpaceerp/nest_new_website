@@ -1545,6 +1545,10 @@
 }
 .footer__eco-item:hover .footer__eco-logo { opacity: 1; }
 
+/* Let the dark logo backing merge with both charcoal brand surfaces. */
+.footer__eco-logo[src*="nestcloud-color-dark"],
+.about-product__logo img[src*="nestcloud-color-dark"] { mix-blend-mode: lighten; }
+
 .footer__eco-caption {
   font-family: var(--font-mono-stack);
   font-size: 0.6875rem;
