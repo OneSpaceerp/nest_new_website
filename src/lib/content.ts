@@ -26,6 +26,7 @@ export const site = {
 } as const;
 
 export const nav = [
+  { "label": "nsdLabs Apps", "href": "/nsdlabs" },
   {
     "label": "OneSpace ERP",
     "href": "/onespace"
@@ -637,6 +638,13 @@ export const ecosystemRow = {
       "logo": "/brands_logo/NestCloud_logo_white.png",
       "ratio": 2.7860696517412937,
       "caption": "Cloud infrastructure"
+    },
+    {
+      "name": "nsdLabs",
+      "href": "/nsdlabs",
+      "logo": "/nsdlabs/nsdlabs-dark.png",
+      "ratio": 2.6740547588,
+      "caption": "Custom ERPNext apps"
     }
   ]
 } as const;
@@ -646,6 +654,7 @@ export const footer = {
     {
       "title": "ECOSYSTEM",
       "links": [
+        { "label": "nsdLabs Apps", "href": "/nsdlabs" },
         {
           "label": "OneSpace ERP",
           "href": "/onespace"

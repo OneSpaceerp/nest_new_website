@@ -1524,7 +1524,7 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(1.25rem, 3vw, 2.5rem);
 }
 
@@ -1534,9 +1534,7 @@
   justify-items: start;
 }
 
-/* Heights, not widths: the three marks have very different aspect ratios
-   (2.06, 1.38, 2.79) and matching their widths would make MiraVoice tower
-   over the other two. */
+/* Match mark heights while preserving each brand's proportions. */
 .footer__eco-logo {
   width: auto;
   height: clamp(30px, 3.4vw, 40px);
@@ -1559,6 +1557,7 @@
 
 @media (max-width: 900px) {
   .footer__eco { grid-template-columns: 1fr; gap: 1.5rem; }
+  .footer__eco-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 560px) {
   .footer__eco-list { grid-template-columns: 1fr; gap: 1.75rem; }
