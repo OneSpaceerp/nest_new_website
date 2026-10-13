@@ -134,7 +134,7 @@ export const oneSpacePages: Story[] = [
     faq: [
       { question: "Can you support a system implemented by someone else?", answer: "We can assess an existing installation for takeover. Access, source availability, version compatibility, custom work, and unresolved issues determine the transition plan and scope." },
       { question: "Are upgrades and new features included?", answer: "Included maintenance, version upgrades, functional support, and development are listed in the agreement. A new feature request is assessed against that scope before work begins." },
-      { question: "Can hosting be included?", answer: "Yes, hosting can be discussed with NestCloud. The proposal should make application support, infrastructure operations, backups, and incident ownership clear." }
+      { question: "Can hosting be included?", answer: "Yes, hosting can be discussed with nsdCloud. The proposal should make application support, infrastructure operations, backups, and incident ownership clear." }
     ], cta: "Discuss your existing ERP"
   },
 ];

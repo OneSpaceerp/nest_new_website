@@ -36,7 +36,7 @@ export const nav = [
     "href": "/miravoice"
   },
   {
-    "label": "NestCloud",
+    "label": "nsdCloud",
     "href": "/nestcloud"
   },
   {
@@ -247,7 +247,7 @@ export const methodology = {
 export const ecosystem = {
   "eyebrow": "THE NEST ECOSYSTEM",
   "heading": "Specialist focus. Shared direction.",
-  "body": "OneSpace connects operations. MiraVoice connects conversations. NestCloud supports the systems behind both. Each can solve a focused need or become part of a wider plan.",
+  "body": "OneSpace connects operations. MiraVoice connects conversations. nsdCloud supports the systems behind both. Each can solve a focused need or become part of a wider plan.",
   "brands": [
     {
       "slug": "onespace",
@@ -298,11 +298,11 @@ export const ecosystem = {
     },
     {
       "slug": "nestcloud",
-      "name": "NestCloud",
+      "name": "nsdCloud",
       "href": "/nestcloud",
-      "logo": "/brands_logo/nestcloud-color-light-v2.png",
+      "logo": "/brands_logo/nsdcloud-light.png",
       "title": "A cloud home with a plan behind it",
-      "desc": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. NestCloud makes the operational details part of the conversation.",
+      "desc": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. nsdCloud makes the operational details part of the conversation.",
       "specs": [
         {
           "k": "Focus",
@@ -440,10 +440,10 @@ export const miravoice = {
 } as const;
 
 export const nestcloud = {
-  "title": "NestCloud",
+  "title": "nsdCloud",
   "eyebrow": "INFRASTRUCTURE",
-  "logo": "/brands_logo/nestcloud-color-light-v2.png",
-  "intro": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. NestCloud makes the operational details part of the conversation.",
+  "logo": "/brands_logo/nsdcloud-light.png",
+  "intro": "Host the applications your business depends on with clear capacity, maintenance, backup, and recovery responsibilities. nsdCloud makes the operational details part of the conversation.",
   "status": "Capacity, continuity, and support—defined around your workload.",
   "features": [
     {
@@ -527,13 +527,13 @@ export const about = {
       "action": "Explore MiraVoice"
     },
     {
-      "name": "NestCloud",
-      "logo": "/brands_logo/nestcloud-color-dark-v2.png",
+      "name": "nsdCloud",
+      "logo": "/brands_logo/nsdcloud-dark.png",
       "kicker": "HOSTING & CONTINUITY",
       "title": "A cloud home with a plan behind it.",
-      "body": "NestCloud gives websites, applications, and business systems a managed home with clear capacity, monitoring, backups, maintenance, and recovery responsibilities.",
+      "body": "nsdCloud gives websites, applications, and business systems a managed home with clear capacity, monitoring, backups, maintenance, and recovery responsibilities.",
       "href": "/nestcloud",
-      "action": "Explore NestCloud"
+      "action": "Explore nsdCloud"
     }
   ]
 } as const;
@@ -633,10 +633,10 @@ export const ecosystemRow = {
       "caption": "Business communications"
     },
     {
-      "name": "NestCloud",
+      "name": "nsdCloud",
       "href": "/nestcloud",
-      "logo": "/brands_logo/nestcloud-color-dark-v2.png",
-      "ratio": 5.235602094240837,
+      "logo": "/brands_logo/nsdcloud-dark.png",
+      "ratio": 4.946601941747573,
       "caption": "Cloud infrastructure"
     },
     {
@@ -664,7 +664,7 @@ export const footer = {
           "href": "/miravoice"
         },
         {
-          "label": "NestCloud",
+          "label": "nsdCloud",
           "href": "/nestcloud"
         }
       ]

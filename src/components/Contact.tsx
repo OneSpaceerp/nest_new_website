@@ -8,7 +8,7 @@ import Accent from "./Accent";
 const productOptions = [
   { value: "onespace", label: "OneSpace ERP", note: "Operations, finance, stock" },
   { value: "miravoice", label: "MiraVoice", note: "Business calls and routing" },
-  { value: "nestcloud", label: "NestCloud", note: "Hosting and continuity" },
+  { value: "nestcloud", label: "nsdCloud", note: "Hosting and continuity" },
   { value: "digital", label: "Digital products", note: "Websites, apps, and growth" },
 ] as const;
 

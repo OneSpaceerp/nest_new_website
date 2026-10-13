@@ -840,7 +840,7 @@
 }
 .art--wave svg { mix-blend-mode: screen; opacity: 1; }
 
-/* -- orbit: concentric rings around a chrome core (NestCloud) */
+/* -- orbit: concentric rings around a chrome core (nsdCloud) */
 .art--orbit {
   background:
     radial-gradient(85% 65% at 50% 42%, rgb(255 255 255 / 0.26) 0%, transparent 58%),
@@ -1546,14 +1546,14 @@
 .footer__eco-item:hover .footer__eco-logo { opacity: 1; }
 
 /* Let the dark logo backing merge with both charcoal brand surfaces. */
-.footer__eco-logo[src*="nestcloud-color-dark"],
-.about-product__logo img[src*="nestcloud-color-dark"] { mix-blend-mode: lighten; }
+.footer__eco-logo[src*="nsdcloud-dark"],
+.about-product__logo img[src*="nsdcloud-dark"] { mix-blend-mode: lighten; }
 
 /* Give the nestCloud wordmark a quieter presence across brand placements. */
-img[src*="nestcloud-color-"] { scale: 0.935; transform-origin: left center; }
-img[src*="nestcloud-color-light"] { mix-blend-mode: multiply; }
-.art__logo img[src*="nestcloud-color-"],
-.about-product__logo img[src*="nestcloud-color-"] { transform-origin: center; }
+img[src*="nsdcloud-"] { scale: 0.935; transform-origin: left center; }
+img[src*="nsdcloud-light"] { mix-blend-mode: multiply; }
+.art__logo img[src*="nsdcloud-"],
+.about-product__logo img[src*="nsdcloud-"] { transform-origin: center; }
 
 .footer__eco-caption {
   font-family: var(--font-mono-stack);

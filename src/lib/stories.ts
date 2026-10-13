@@ -70,7 +70,7 @@ export const serviceStories: Story[] = [
     ], outcomes: ["Clear ownership of the systems your team relies on.", "Access designed around business roles and boundaries.", "A documented response when a critical service is interrupted."],
     faq: [
       { question: "Can you improve an existing network?", answer: "Yes. An assessment identifies which components can stay, which need attention, and which changes should be prioritised. A phased plan can reduce disruption to daily work." },
-      { question: "How is this different from NestCloud?", answer: "Infrastructure covers the wider environment, including office networks, connectivity, and on-site systems. NestCloud focuses on hosting and the operation of cloud workloads. They can be scoped together." },
+      { question: "How is this different from nsdCloud?", answer: "Infrastructure covers the wider environment, including office networks, connectivity, and on-site systems. nsdCloud focuses on hosting and the operation of cloud workloads. They can be scoped together." },
       { question: "Is round-the-clock support included?", answer: "Support hours, incident priorities, escalation contacts, and response targets are agreed for the selected service. They should not be assumed from a general service description." }
     ], cta: "Review your infrastructure"
   },
@@ -94,7 +94,7 @@ export const serviceStories: Story[] = [
     slug: "nestcloud", eyebrow: "NESTCLOUD / HOSTING & OPERATIONS",
     title: "Room to grow. A plan to recover.",
     intro: "Give your websites, applications, and business systems a cloud home with clear capacity, backup, maintenance, and support responsibilities.", image: "cloud",
-    opening: { title: "Your application needs more than somewhere to run.", body: "A server can be online while an application is slow, a certificate is expiring, or a backup is failing. NestCloud starts with the workload and the business around it, then defines how the environment will be operated over time." },
+    opening: { title: "Your application needs more than somewhere to run.", body: "A server can be online while an application is slow, a certificate is expiring, or a backup is failing. nsdCloud starts with the workload and the business around it, then defines how the environment will be operated over time." },
     chapters: [
       { title: "Choose capacity around the workload", body: "We consider application requirements, users, storage growth, integrations, and expected peaks. The hosting design makes resource limits, access needs, and responsibility boundaries visible from the beginning.", points: ["Websites, business applications, and ERP workloads", "Virtual servers and scoped managed hosting", "Domain, DNS, and certificate configuration"] },
       { title: "Move with a rehearsed plan", body: "Migration starts with an inventory and a restorable copy. We test the destination, agree a cutover window, and verify the application and data before retiring the old environment. A rollback route is defined before the move.", points: ["Dependency and data-readiness review", "Staged migration and validation", "Cutover communication and rollback planning"] },

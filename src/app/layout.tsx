@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   keywords: [
     "ERP Egypt", "ERPNext", "Odoo", "Oracle", "OneSpace ERP", "MiraVoice",
-    "NestCloud", "IP PBX", "cloud hosting", "web development",
+    "nsdCloud", "IP PBX", "cloud hosting", "web development",
     "mobile apps", "digital marketing", "Nest Software Development",
   ],
   authors: [{ name: site.name, url: site.url }],

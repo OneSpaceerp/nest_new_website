@@ -7,7 +7,7 @@ export type ConfirmationDetails = {
 };
 
 const productLabels: Record<string, string> = {
-  onespace: "OneSpace ERP", miravoice: "MiraVoice", nestcloud: "NestCloud", digital: "Digital products",
+  onespace: "OneSpace ERP", miravoice: "MiraVoice", nestcloud: "nsdCloud", digital: "Digital products",
 };
 export const productLabel = (value: string) => productLabels[value] || value;
 const escapeHtml = (value: string) => value.replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]!);
