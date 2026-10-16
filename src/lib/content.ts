@@ -636,14 +636,14 @@ export const ecosystemRow = {
       "name": "nsdCloud",
       "href": "/nestcloud",
       "logo": "/brands_logo/nsdcloud-dark.png",
-      "ratio": 4.946601941747573,
+      "ratio": 4.995073891625616,
       "caption": "Cloud infrastructure"
     },
     {
       "name": "nsdLabs",
       "href": "/nsdlabs",
       "logo": "/nsdlabs/nsdlabs-dark.png",
-      "ratio": 2.6740547588,
+      "ratio": 4.193899782135076,
       "caption": "Custom ERPNext apps"
     }
   ]
