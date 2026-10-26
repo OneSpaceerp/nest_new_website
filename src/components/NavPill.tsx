@@ -5,32 +5,20 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { site, nav } from "@/lib/content";
 
-/**
- * The floating bottom pill from the reference: cream, fully rounded, centred,
- * 24px off the viewport bottom. It is hidden over the hero and slides up once
- * the hero has been scrolled past.
- *
- * The reference is a single-page site so its pill holds only a wordmark and a
- * CTA. NSD has eleven routes, so the wordmark doubles as a menu trigger —
- * the pill expands upward into the full navigation.
- */
+/** Persistent, keyboard-accessible navigation. The floating control layer stays separate from page content. */
 export default function NavPill() {
-  const [shown, setShown] = useState(false);
+  const shown = true;
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
-
-  // Reveal once the first viewport has been passed.
-  useEffect(() => {
-    const onScroll = () => setShown(window.scrollY > window.innerHeight * 0.65);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const trigger = useRef<HTMLButtonElement>(null);
 
   // Dismiss on Escape or outside click.
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    wrap.current?.querySelector<HTMLAnchorElement>("nav a")?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpen(false); trigger.current?.focus(); }
+    };
     const onDown = (e: MouseEvent) => {
       if (!wrap.current?.contains(e.target as Node)) setOpen(false);
     };
@@ -45,9 +33,10 @@ export default function NavPill() {
   return (
     <div
       ref={wrap}
+      onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget)) setOpen(false); }}
       className={`navpill ${shown ? "is-shown" : ""} ${open ? "is-open" : ""}`}
     >
-      <nav className="navpill__menu" aria-label="Main" hidden={!open}>
+      <nav id="main-navigation" className="navpill__menu" aria-label="Main" hidden={!open}>
         <ul>
           {nav.map((n) => (
             <li key={n.href}>
@@ -63,6 +52,8 @@ export default function NavPill() {
         <button
           type="button"
           className="navpill__brand"
+          ref={trigger}
+          aria-controls="main-navigation"
           aria-expanded={open}
           aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}

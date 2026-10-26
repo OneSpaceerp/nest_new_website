@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { methodology } from "@/lib/content";
-import { getGsap, prefersReducedMotion } from "@/lib/motion";
+import { useQuietMotion } from "@/lib/useMotionPreference";
+import { getGsap } from "@/lib/motion";
 import Accent from "./Accent";
 
 /**
@@ -16,6 +17,7 @@ import Accent from "./Accent";
  *    so the eye always knows where it is in the sequence.
  */
 export default function HowItWorks() {
+  const quiet = useQuietMotion();
   const section = useRef<HTMLElement>(null);
   const list = useRef<HTMLOListElement>(null);
   const [active, setActive] = useState(0);
@@ -25,7 +27,7 @@ export default function HowItWorks() {
     const ul = list.current;
     if (!el || !ul) return;
 
-    if (prefersReducedMotion()) {
+    if (quiet) {
       setActive(methodology.steps.length - 1);
       return;
     }
@@ -74,8 +76,8 @@ export default function HowItWorks() {
           {
             y: () => -travel(),
             ease: "none",
-            invalidateOnRefresh: true,
             scrollTrigger: {
+              invalidateOnRefresh: true,
               trigger: el,
               start: "top top",
               end: () => `+=${count * 60}%`,
@@ -93,7 +95,7 @@ export default function HowItWorks() {
 
     ScrollTrigger.refresh();
     return () => ctx.revert();
-  }, []);
+  }, [quiet]);
 
   return (
     <section ref={section} id="methodology" className="hiw" data-bg="warm">

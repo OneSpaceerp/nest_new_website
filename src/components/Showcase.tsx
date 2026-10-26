@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { Fragment, useEffect, useRef, useState } from "react";
 import { ecosystem } from "@/lib/content";
-import { getGsap, prefersReducedMotion } from "@/lib/motion";
+import { useQuietMotion } from "@/lib/useMotionPreference";
+import { getGsap } from "@/lib/motion";
 import BrandArt from "./BrandArt";
 import Accent from "./Accent";
 
@@ -38,6 +39,7 @@ const clamp = (min: number, v: number, max: number) =>
 type Geo = { x: number; w: number; h: number; s: number; tw: number; th: number };
 
 export default function Showcase() {
+  const quiet = useQuietMotion();
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const slides = useRef<(HTMLDivElement | null)[]>([]);
@@ -49,7 +51,7 @@ export default function Showcase() {
     const st = stage.current;
     if (!el || !st) return;
 
-    if (prefersReducedMotion() || window.innerWidth < 900) return;
+    if (quiet) { setEnabled(false); return; }
     setEnabled(true);
 
     const { gsap, ScrollTrigger } = getGsap();
@@ -152,8 +154,9 @@ export default function Showcase() {
     return () => {
       window.removeEventListener("resize", onResize);
       ctx.revert();
+      slides.current.forEach((node) => node?.removeAttribute("style"));
     };
-  }, []);
+  }, [quiet]);
 
   const brand = ecosystem.brands[active];
 

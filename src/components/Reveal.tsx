@@ -2,13 +2,7 @@
 
 import { useEffect, useRef, type ElementType, type ReactNode } from "react";
 
-/**
- * Entrance primitive: fade + 24px rise, released by IntersectionObserver.
- * `delay` drives the stagger (the reference uses ~90ms between siblings).
- *
- * Deliberately not GSAP — these are one-shot, non-scrubbed entrances, and a
- * CSS transition costs nothing on the main thread.
- */
+/** One-shot entrance with a short, capped stagger. Keyboard focus reveals content immediately. */
 export default function Reveal({
   as: Tag = "div",
   delay = 0,
@@ -34,7 +28,7 @@ export default function Reveal({
           io.unobserve(el);
         }
       },
-      { rootMargin: "0px 0px -12% 0px", threshold: 0.05 },
+      { rootMargin: "0px 0px 24px 0px", threshold: 0 },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -44,7 +38,7 @@ export default function Reveal({
     <Tag
       ref={ref}
       className={`reveal ${className}`}
-      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
+      style={{ "--reveal-delay": `${Math.min(delay, 160)}ms` } as React.CSSProperties}
       {...rest}
     >
       {children}

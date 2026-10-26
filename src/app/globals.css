@@ -65,9 +65,9 @@
   --gutter: 32px;
   --section-y: clamp(88px, 11vw, 160px);
 
-  --d-fast: 180ms;
-  --d-base: 260ms;
-  --d-slow: 700ms;
+  --d-fast: 160ms;
+  --d-base: 220ms;
+  --d-slow: 420ms;
 
   /* Driven by the scroll-linked background controller. */
   --page-bg: #e0dbd8;
@@ -85,7 +85,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: auto; /* Lenis owns scrolling */
+  scroll-behavior: auto; /* Preserve native scroll and history behavior. */
 }
 
 body {
@@ -298,18 +298,10 @@ textarea {
   will-change: transform;
 }
 
-/* Primary action: brand cyan fill, white label.
- *
- * NOTE: white on #02C8F0 measures 2.00:1 — it fails WCAG AA (4.5:1) and the
- * large-text threshold (3:1). The fill is also only 1.80:1 against the cream
- * page, so the button's own edge is low contrast. This is the requested
- * treatment and is kept deliberately. To make it pass, either:
- *   - keep the fill, set `color: var(--color-ink)`   -> 8.29:1, or
- *   - keep the white label, set fill to #017A92      -> 5.00:1.
- * The resting shadow defines the button's edge against light backgrounds. */
+/* Cyan actions use dark ink for readable labels. */
 .btn-primary {
   background: var(--color-brand);
-  color: #fff;
+  color: var(--color-ink);
   box-shadow:
     0 1px 2px rgb(2 90 110 / 0.22),
     0 6px 16px -10px rgb(2 90 110 / 0.5);
@@ -321,12 +313,9 @@ textarea {
   box-shadow: 0 10px 28px -12px rgb(2 90 110 / 0.7);
 }
 
-/* The same action sitting on the dark CTA card. Cyan reads 8.29:1 against that
-   card, so the button is well separated there; only the white label carries
-   the contrast problem noted above. */
 .btn-inverse {
   background: var(--color-brand);
-  color: #fff;
+  color: var(--color-ink);
 }
 
 .btn-inverse:hover {
@@ -394,7 +383,7 @@ textarea {
 
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(12px);
   transition:
     opacity var(--d-slow) var(--ease-out-expo),
     transform var(--d-slow) var(--ease-out-expo);
@@ -429,4 +418,71 @@ html.no-js .reveal {
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Shared refinement layer follows the base rules. */
+
+/* Nest's web interpretation of the Apple design foundations.
+   Glass belongs to navigation; content retains solid, readable surfaces. */
+:root { --surface-border: rgb(34 30 27 / .12); --text-secondary: #625b56; }
+:is(h1,h2,h3,.t-display,.t-hero,.t-statement) { text-wrap: balance; }
+:is(.t-body,.t-lead,.page__intro) { text-wrap: pretty; }
+.t-muted { color: var(--text-secondary); }
+.btn { min-height: 48px; will-change: auto; }
+.btn:disabled { cursor: wait; opacity: .65; transform: none; }
+:focus-visible { outline: 3px solid var(--color-brand-ink); outline-offset: 4px; box-shadow: 0 0 0 6px var(--color-cream); }
+:is(section,[id],legend) { scroll-margin-block: 32px 120px; }
+.reveal:focus-within { opacity: 1; transform: none; transition: none; }
+.navpill { transition-duration: var(--d-base); }
+.navpill__bar,.navpill__menu { border: 1px solid rgb(255 255 255 / .8); }
+@supports (backdrop-filter: blur(16px)) {
+  .navpill__bar,.navpill__menu { background: rgb(253 251 247 / .94); backdrop-filter: blur(16px); }
+}
+.navpill__brand { min-height: 44px; }
+.navpill__menu { transform-origin: bottom center; }
+.navpill__menu a { border-radius: 14px; transition: background-color var(--d-fast) ease; }
+.navpill__menu a:hover { background: var(--color-card); }
+.hero__line,.hero__aside { animation-duration: 480ms; animation-delay: 80ms; }
+.hero__scroll svg { animation: none; }
+.field input,.field select,.field textarea { border-color: #958b84; transition: border-color var(--d-fast) ease, box-shadow var(--d-fast) ease; }
+.field :is(input,select,textarea):focus { border-color: var(--color-brand-ink); box-shadow: 0 0 0 3px rgb(1 106 127 / .12); }
+.questionnaire__step { animation: stepEnter 220ms ease-out; }
+.questionnaire__progress i { transition: width var(--d-base) ease; }
+.clients__heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
+.clients__heading .clients__head { margin: 0; }
+.motion-control { padding: 10px 16px; min-height: 44px; border: 1px solid #958b84; border-radius: 999px; color: var(--color-ink); background: var(--color-cream); font: inherit; font-size: .875rem; cursor: pointer; }
+.clients.is-paused .clients__track,.clients:focus-within .clients__track { animation-play-state: paused; }
+:is(.story-card,.about-product,.panel,.contact__panel) { border: 1px solid var(--surface-border); }
+.footer .t-muted,.statement .t-muted { color: #c9c2bd; }
+@keyframes stepEnter { from { opacity: .5; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:hover { transform: translateY(-1px); }
+}
+@media (hover: none) { .btn:hover { transform: none; } }
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  .navpill__bar,.navpill__menu { background: var(--color-pill); backdrop-filter: none; border-color: var(--color-ink); }
+}
+@media (prefers-contrast: more) {
+  .t-muted { color: var(--color-ink); }
+  .footer .t-muted,.statement .t-muted { color: white; }
+  :is(.story-card,.about-product,.panel,.contact__panel,.btn-ghost) { border: 1px solid currentColor; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-delay: 0ms !important; transition-delay: 0ms !important; }
+  .motion-control { display: none; }
+}
+@media (max-width: 600px) {
+  .t-body { font-size: 1rem; }
+  .hero__inner { padding-bottom: 120px; }
+  .navpill__cta { font-size: .9375rem; }
+}
+
+
+@media (max-height: 600px) {
+  .sc__stage { display: none; }
+  .sc__list { display: grid; gap: 48px; }
+  .sc__pin,.hiw__pin { height: auto; padding-block: 0; }
+  .hiw__card { height: auto; overflow: visible; }
+  .hiw__list { mask-image: none; transform: none !important; }
+  .hiw__step { opacity: 1; }
 }

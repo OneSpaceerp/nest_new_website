@@ -1,58 +1,20 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { statement } from "@/lib/content";
-import { getGsap, prefersReducedMotion } from "@/lib/motion";
+import { useQuietMotion } from "@/lib/useMotionPreference";
+import { getGsap } from "@/lib/motion";
 import Glyph from "./Glyph";
 
-/**
- * Two independent behaviours share this section:
- *
- * 1. Word-level phrase cycling. The headline keeps a fixed skeleton and swaps
- *    individual words — outgoing blurs out and lifts, incoming blurs in, with
- *    a ~60ms stagger across the line. Whole-line crossfades look cheap by
- *    comparison; the word-level swap is what sells it.
- *
- * 2. The signature exit: as the section scrolls away the full-bleed dark panel
- *    shrinks into a rounded card, revealing the next section's background
- *    behind it. Scrubbed, so it reverses correctly on the way back up.
- */
+/** A stable headline with a restrained scroll-linked exit on spacious screens. */
 export default function Statement() {
+  const quiet = useQuietMotion();
   const section = useRef<HTMLElement>(null);
   const panel = useRef<HTMLDivElement>(null);
-  const [index, setIndex] = useState(0);
-  const [swapping, setSwapping] = useState(false);
-
-  /* --- phrase cycling ------------------------------------------------- */
-  useEffect(() => {
-    if (prefersReducedMotion()) return;
-    if (statement.phrases.length < 2) return;
-
-    let inView = false;
-    const io = new IntersectionObserver(
-      ([e]) => (inView = e.isIntersecting),
-      { threshold: 0.35 },
-    );
-    if (section.current) io.observe(section.current);
-
-    const id = window.setInterval(() => {
-      if (!inView || document.hidden) return;
-      setSwapping(true);
-      window.setTimeout(() => {
-        setIndex((i) => (i + 1) % statement.phrases.length);
-        setSwapping(false);
-      }, 380); // matches --d-swap
-    }, 3200);
-
-    return () => {
-      window.clearInterval(id);
-      io.disconnect();
-    };
-  }, []);
 
   /* --- shrink-to-card exit -------------------------------------------- */
   useEffect(() => {
-    if (prefersReducedMotion()) return;
+    if (quiet) return;
     const el = section.current;
     const card = panel.current;
     if (!el || !card) return;
@@ -88,9 +50,9 @@ export default function Statement() {
 
     ScrollTrigger.refresh();
     return () => ctx.revert();
-  }, []);
+  }, [quiet]);
 
-  const phrase = statement.phrases[index];
+  const phrase = statement.phrases[0];
 
   return (
     <section ref={section} className="statement" data-bg="plum">
@@ -100,8 +62,7 @@ export default function Statement() {
           <p className="statement__eyebrow t-eyebrow">{statement.eyebrow}</p>
 
           <p
-            className={`statement__text t-statement ${swapping ? "is-swapping" : ""}`}
-            aria-live="polite"
+            className="statement__text t-statement"
           >
             {phrase.lines.map((line, li) => (
               <span key={li} className="statement__line">

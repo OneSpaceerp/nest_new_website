@@ -1,18 +1,17 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import { clientLogos, clientsHeading } from "@/lib/content";
 
-/**
- * Client logo marquee, preserved from the existing site (all 26 logos, exact
- * files). Duplicated once and translated -50% so the loop is seamless; pauses
- * on hover and is disabled entirely under reduced-motion.
- */
+/** Client logos with a persistent pause control and a static reduced-motion layout. */
 export default function ClientMarquee() {
+  const [paused, setPaused] = useState(false);
   const doubled = [...clientLogos, ...clientLogos];
 
   return (
-    <section className="clients" data-bg="cream" aria-label="Clients">
+    <section className={`clients ${paused ? "is-paused" : ""}`} data-bg="cream" aria-label="Clients">
       <div className="container">
-        <p className="t-mono t-muted clients__head">{clientsHeading}</p>
+        <div className="clients__heading"><p className="t-mono t-muted clients__head">{clientsHeading}</p><button type="button" className="motion-control" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "Resume logos" : "Pause logos"}</button></div>
       </div>
 
       <div className="clients__viewport">
