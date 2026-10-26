@@ -7,7 +7,7 @@ Applied the Apple design skill as web guidance while retaining Nest fonts, cyan,
 - Dark ink on cyan actions replaces low-contrast white labels. Secondary text uses a stable neutral instead of background-dependent transparency.
 - Motion tokens: 160ms feedback, 220ms transitions, 420ms entrances; entrance stagger capped at 160ms. These are Nest implementation choices, not Apple-prescribed timings.
 - Native browser scrolling preserves touch, anchors and history. Navigation stays available from the first viewport, supports Escape and returns focus to its trigger.
-- Remove automatic headline cycling and perpetual scroll-arrow motion. Client logos have a pause control. Existing nsdLabs pause controls remain.
+- Keep the rotating business-goal headline with a pause control, off-screen suspension and live reduced-motion support. Remove perpetual scroll-arrow motion. Client logos have a pause control. Existing nsdLabs pause controls remain.
 - Large scroll choreography responds live to reduced-motion settings, widths below 900px and heights of 600px or less. Small-screen content uses the static list.
 - Enquiry steps validate required information before continuing, focus the next heading, announce progress and prevent returning during submission.
 
