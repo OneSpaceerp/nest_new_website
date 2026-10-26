@@ -1,4 +1,4 @@
-# nsd-eg.com — redesign
+# nsd-eg.com | redesign
 
 Next.js 15 rebuild of [nsd-eg.com](https://nsd-eg.com) in the visual language of
 the reference recording (`to_clone.mp4`).
