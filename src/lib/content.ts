@@ -328,31 +328,31 @@ export const services = {
   "body": "Customers meet your business through a website, an app, or a campaign. Your team delivers the promise through its systems. We help those experiences work together.",
   "items": [
     {
-      "title": "WEB DEVELOPMENT",
+      "title": "Web development",
       "desc": "Websites, stores, and portals that make the next action clear—and connect it to the business behind the screen.",
       "stat": "Websites & applications",
       "href": "/web-development"
     },
     {
-      "title": "MOBILE APPS",
+      "title": "Mobile apps",
       "desc": "Useful mobile experiences for customers and teams, shaped around the task that matters.",
       "stat": "iOS & Android",
       "href": "/mobile-apps"
     },
     {
-      "title": "DIGITAL MARKETING",
+      "title": "Digital marketing",
       "desc": "Positioning, content, and campaigns connected to a measurable customer journey.",
       "stat": "Strategy & campaigns",
       "href": "/digital-marketing"
     },
     {
-      "title": "GRAPHIC & MOTION",
+      "title": "Graphic & motion",
       "desc": "A consistent creative language for your brand, from everyday content to a product launch.",
       "stat": "Identity & storytelling",
       "href": "/digital-marketing"
     },
     {
-      "title": "INFRASTRUCTURE",
+      "title": "Infrastructure",
       "desc": "Networks, access, and continuity planning that support the way your people work.",
       "stat": "Networks & continuity",
       "href": "/infrastructure"
@@ -409,7 +409,7 @@ export const clientLogos = [
   "المستقبل1.png"
 ] as const;
 
-export const clientsHeading = "// TRUSTED BY INDUSTRY LEADERS" as const;
+export const clientsHeading = "Trusted by industry leaders" as const;
 
 export const onespace = {
   "title": "OneSpace ERP",

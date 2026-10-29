@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { clientLogos, clientsHeading } from "@/lib/content";
+import MotionToggle from "./MotionToggle";
 
 /** Client logos with a persistent pause control and a static reduced-motion layout. */
 export default function ClientMarquee() {
@@ -11,7 +12,7 @@ export default function ClientMarquee() {
   return (
     <section className={`clients ${paused ? "is-paused" : ""}`} data-bg="cream" aria-label="Clients">
       <div className="container">
-        <div className="clients__heading"><p className="t-mono t-muted clients__head">{clientsHeading}</p><button type="button" className="motion-control" aria-pressed={paused} onClick={() => setPaused(!paused)}>{paused ? "Resume logos" : "Pause logos"}</button></div>
+        <div className="clients__heading"><p className="t-eyebrow clients__head">{clientsHeading}</p><MotionToggle paused={paused} onToggle={() => setPaused(!paused)} subject="client logos" /></div>
       </div>
 
       <div className="clients__viewport">
