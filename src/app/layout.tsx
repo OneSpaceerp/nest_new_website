@@ -75,6 +75,9 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: "#e0dbd8",
   colorScheme: "light",
+  // Lets the floating navigation and footer read env(safe-area-inset-*) on
+  // notched phones; without it those insets resolve to 0.
+  viewportFit: "cover",
 };
 
 const orgJsonLd = {
@@ -100,6 +103,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      // In-page anchors glide (see globals.css); this tells Next to suspend
+      // that during route changes so a new page opens at its top instantly.
+      data-scroll-behavior="smooth"
       className={`no-js ${display.variable} ${body.variable} ${mono.variable}`}
     >
       {/*

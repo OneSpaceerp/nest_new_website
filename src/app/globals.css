@@ -71,6 +71,15 @@
 
   /* Driven by the scroll-linked background controller. */
   --page-bg: #e0dbd8;
+
+  /* Height the floating navigation occupies at the bottom of the viewport,
+     plus breathing room. Anything that must stay visible above it on first
+     paint (hero actions, footer base) pads by this amount. */
+  --nav-clear: calc(112px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 600px) {
+  :root { --nav-clear: calc(100px + env(safe-area-inset-bottom, 0px)); }
 }
 
 /* ==========================================================================
@@ -86,6 +95,13 @@
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: auto; /* Preserve native scroll and history behavior. */
+}
+
+/* Native smooth scrolling for in-page anchors only ("Talk about your next
+   step" → #contact). Wheel and touch scrolling are untouched; Next turns
+   this off during route changes via data-scroll-behavior on <html>. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
 }
 
 body {
@@ -430,6 +446,13 @@ html.no-js .reveal {
 .t-muted { color: var(--text-secondary); }
 .btn { min-height: 48px; will-change: auto; }
 .btn:disabled { cursor: wait; opacity: .65; transform: none; }
+/* These controls draw their own pressed state; the default grey tap flash
+   would sit on top of it. Plain text links keep the platform highlight. */
+:is(.btn,.scard,.navpill__brand,.product-choice,.motion-control,.story-faq summary,.industry-list summary) { -webkit-tap-highlight-color: transparent; }
+.navpill__brand:active { background: color-mix(in srgb, var(--color-rail) 50%, transparent); }
+/* The advantage block and the client logos read as one closing beat;
+   two full section paddings between them left a dead band. */
+.advantage.section { padding-bottom: clamp(56px, 7vw, 104px); }
 :focus-visible { outline: 3px solid var(--color-brand-ink); outline-offset: 4px; box-shadow: 0 0 0 6px var(--color-cream); }
 :is(section,[id],legend) { scroll-margin-block: 32px 120px; }
 .reveal:focus-within { opacity: 1; transform: none; transition: none; }
@@ -443,16 +466,19 @@ html.no-js .reveal {
 .navpill__menu a { border-radius: 14px; transition: background-color var(--d-fast) ease; }
 .navpill__menu a:hover { background: var(--color-card); }
 .hero__line,.hero__aside { animation-duration: 480ms; animation-delay: 80ms; }
-.hero__scroll svg { animation: none; }
 .field input,.field select,.field textarea { border-color: #958b84; transition: border-color var(--d-fast) ease, box-shadow var(--d-fast) ease; }
 .field :is(input,select,textarea):focus { border-color: var(--color-brand-ink); box-shadow: 0 0 0 3px rgb(1 106 127 / .12); }
 .questionnaire__step { animation: stepEnter 220ms ease-out; }
 .questionnaire__progress i { transition: width var(--d-base) ease; }
 .clients__heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; }
 .clients__heading .clients__head { margin: 0; }
-.motion-control { padding: 10px 16px; min-height: 44px; border: 1px solid #958b84; border-radius: 999px; color: var(--color-ink); background: var(--color-cream); font: inherit; font-size: .875rem; cursor: pointer; }
+/* Compact pause/play control: icon + one word, 44px hit area. */
+.motion-control { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px 0 13px; border: 1px solid color-mix(in srgb, currentColor 28%, transparent); border-radius: 999px; color: var(--color-ink-strong); background: transparent; font: inherit; font-size: .8125rem; font-weight: 500; letter-spacing: .01em; cursor: pointer; transition: border-color var(--d-fast) ease, background-color var(--d-fast) ease; }
+.motion-control svg { width: 13px; height: 13px; flex: none; }
+.motion-control:hover { border-color: currentColor; background: color-mix(in srgb, currentColor 6%, transparent); }
+.motion-control:active { background: color-mix(in srgb, currentColor 12%, transparent); }
 .clients.is-paused .clients__track,.clients:focus-within .clients__track { animation-play-state: paused; }
-.statement__pause { margin-top: 28px; background: transparent; color: var(--color-on-dark); border-color: #a79eaa; }
+.statement__pause { margin-top: 28px; color: var(--color-on-dark); }
 :is(.story-card,.about-product,.panel,.contact__panel) { border: 1px solid var(--surface-border); }
 .footer .t-muted,.statement .t-muted { color: #c9c2bd; }
 @keyframes stepEnter { from { opacity: .5; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -474,7 +500,6 @@ html.no-js .reveal {
 }
 @media (max-width: 600px) {
   .t-body { font-size: 1rem; }
-  .hero__inner { padding-bottom: 120px; }
   .navpill__cta { font-size: .9375rem; }
 }
 

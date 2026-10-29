@@ -32,7 +32,7 @@
 
 @media (max-width: 600px) {
   :root { --section-y: 64px; }
-  .hero__inner { padding-block: 28px 96px; gap: 48px; }
+  .hero__inner { padding-block: 28px var(--nav-clear); gap: 48px; }
   .hero__top-body { max-width: 38ch; color: var(--color-ink-strong); }
   .hero__headline { font-size: clamp(2rem, 8.5vw, 3rem); overflow-wrap: anywhere; }
   .hero__bottom { gap: 24px; }
@@ -66,7 +66,6 @@
   .hiw__chips .chip { white-space: normal; line-height: 1.4; }
   .ctacard__card { padding: 40px 20px; }
   .ctacard__btn { max-width: 100%; white-space: normal; }
-  .footer { padding-bottom: calc(120px + env(safe-area-inset-bottom, 0px)); }
   .footer__grid { gap: 28px 16px; }
   .footer__contact { grid-column: 1 / -1; }
   .footer__links { gap: 4px; }
@@ -76,6 +75,59 @@
   .footer__eco-caption { line-height: 1.6; }
   .footer__base { flex-direction: column; line-height: 1.7; }
   .footer__base a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* Small-type floor. Mono labels were set at 10–11px in places; below 12px
+   uppercase mono stops resolving on phone screens. */
+.spec dt, .erow__stat, .flow__num, .footer__eco-caption, .labs-card__category,
+.labs-card__number { font-size: 0.75rem; }
+.onespace-nav__brand span, .labs-universe__core > span:last-child { font-size: 12px; }
+.labs-universe__app span, .labs-card__focus li { font-size: 0.8125rem; }
+
+/* Standalone links on touch screens get a 44px target. Desktop keeps the
+   tighter typographic rhythm because a mouse does not need the room. */
+@media (pointer: coarse) {
+  .sc__link, .story-textlink, .onespace-nav__cta, .labs-topbar > a:last-child,
+  .labs-card__bottom a, .story-related a, .footer__links a, .footer__base a,
+  .contact__meta a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .sc__link, .contact__meta a { padding-bottom: 0; }
+  .onespace-nav__links a { min-height: 44px; display: inline-flex; align-items: center; }
+  .footer__links { gap: 0.25rem; }
+  .footer__eco-item { padding-block: 7px; }
+}
+
+/* FAQ rows: the whole row is the target, not just the text line. */
+.story-faq details, .industry-list details { padding: 0; }
+.story-faq summary, .industry-list summary { padding-block: 22px; align-items: center; }
+.story-faq details p, .industry-list details p { margin: 0 0 24px; }
+.story-faq summary span, .industry-list summary span { display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: color-mix(in srgb, var(--color-brand-ink) 9%, transparent); font-family: var(--font-sans); font-size: 1.125rem; line-height: 1; transition: transform var(--d-base) var(--ease-out-expo), background-color var(--d-base) var(--ease-out-expo); }
+@media (hover: hover) and (pointer: fine) {
+  .story-faq summary:hover span, .industry-list summary:hover span { background: color-mix(in srgb, var(--color-brand-ink) 16%, transparent); }
+}
+
+/* Opening a question eases its answer in rather than snapping, where the
+   browser can animate to an intrinsic height. Elsewhere it simply opens. */
+@supports (interpolate-size: allow-keywords) {
+  :root { interpolate-size: allow-keywords; }
+  :is(.story-faq, .industry-list) details::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition: block-size var(--d-base) var(--ease-out-expo), content-visibility var(--d-base) allow-discrete;
+  }
+  :is(.story-faq, .industry-list) details[open]::details-content { block-size: auto; }
+}
+
+/* Process chips: two per row on phones instead of one, halving the height
+   of the checklist without shrinking the text below legibility. */
+@media (max-width: 600px) {
+  .hiw__chips { gap: 0.45rem; }
+  .hiw__chips .chip { padding: 0.5rem 0.8rem; font-size: 0.875rem; }
+  .hiw__step { padding-block: 1.5rem; }
+  .hiw__desc { margin-bottom: 0.9rem; }
 }
 
 @media (max-width: 359px) {

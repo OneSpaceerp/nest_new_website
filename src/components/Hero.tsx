@@ -9,8 +9,10 @@ import { hero } from "@/lib/content";
  *
  *   logo          top-left
  *   headline      bottom-left, oversized
- *   "Scroll"      bottom-centre
- *   body + CTA    bottom-right
+ *   CTAs          bottom-right
+ *
+ * The bottom-centre is left to the floating navigation, which the hero
+ * clears with padding rather than sharing the row with a scroll cue.
  *
  * Everything sits on a full-bleed pearlescent field. Copy is low-contrast
  * against it by design — the reference never uses hard black on the hero.
@@ -55,19 +57,6 @@ export default function Hero() {
               </span>
             ))}
           </h1>
-
-          <div className="hero__scroll" aria-hidden="true">
-            <span>Scroll</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M6 9l6 6 6-6"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
 
           <div className="hero__aside">
             <div className="hero__actions">

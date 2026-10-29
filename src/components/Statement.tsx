@@ -5,6 +5,7 @@ import { statement } from "@/lib/content";
 import { useQuietMotion } from "@/lib/useMotionPreference";
 import { getGsap } from "@/lib/motion";
 import Glyph from "./Glyph";
+import MotionToggle from "./MotionToggle";
 
 /** Rotating business goals with optional motion and a restrained desktop exit. */
 export default function Statement() {
@@ -122,9 +123,12 @@ export default function Statement() {
               </span>
             ))}
           </p>
-          <button type="button" className="motion-control statement__pause" aria-pressed={paused} onClick={() => setPaused((value) => !value)}>
-            {paused ? "Resume text animation" : "Pause text animation"}
-          </button>
+          <MotionToggle
+            className="statement__pause"
+            paused={paused}
+            onToggle={() => setPaused((value) => !value)}
+            subject="rotating headline"
+          />
           </div>
         </div>
       </div>
