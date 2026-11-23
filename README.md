@@ -4,7 +4,12 @@ Next.js 15 rebuild of [nsd-eg.com](https://nsd-eg.com) in the visual language of
 the reference recording (`to_clone.mp4`).
 
 **All content, routes, logos and contact details are preserved verbatim from the
-live site.** Only the visual design and typography change. The full reverse
+live site.** Only the visual design and typography change.
+
+> **Visual layer: Craft.** The site is skinned in Nest's paper-craft language:
+> cut-corner sheets taken from the logo plate, cyan and navy paper strips,
+> creases and punched tags. Read [`docs/CRAFT.md`](docs/CRAFT.md) before
+> changing anything visual; the Craft rules live in `src/app/craft.css`. The full reverse
 engineering of the reference — colour sampling, type scale, grid, motion
 timings — is in [`docs/DESIGN-AUDIT.md`](docs/DESIGN-AUDIT.md); read that first
 if you're changing anything visual.

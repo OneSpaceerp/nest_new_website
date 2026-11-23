@@ -1,7 +1,5 @@
-/* Shared responsive corrections, after the component and story layouts. */
-.hero__bottom > *, .contact__grid > *, .footer__grid > *,
-.story-hero > *, .story-chapter > *, .home-story__grid > *,
-.story-platform > *, .story-enquiry > *, .hiw__body { min-width: 0; }
+
+.contact__grid > *, .footer__grid > *, .story-hero > *, .story-chapter > *, .home-story__grid > *, .story-platform > *, .story-enquiry > *, .hiw__body { min-width: 0; }
 .panelgrid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
 .footer__links, .contact__meta dd, .spec dd { overflow-wrap: anywhere; }
 .navpill { width: max-content; max-width: calc(100% - 32px); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); translate: none; transform: translate(-50%, 28px); }
@@ -25,18 +23,10 @@
   .statement { min-height: 0; }
   .statement__panel { position: relative; padding-block: clamp(64px, 12vw, 100px); }
   .statement__word { max-width: 100%; overflow-wrap: anywhere; }
-  .hero__inner { gap: 56px; }
-  .hero__aside { width: 100%; max-width: none; }
-  .hero__bg::before { background: linear-gradient(180deg, rgb(247 242 239 / .88), rgb(247 242 239 / .45) 50%, rgb(247 242 239 / .94)); }
 }
 
 @media (max-width: 600px) {
   :root { --section-y: 64px; }
-  .hero__inner { padding-block: 28px var(--nav-clear); gap: 48px; }
-  .hero__top-body { max-width: 38ch; color: var(--color-ink-strong); }
-  .hero__headline { font-size: clamp(2rem, 8.5vw, 3rem); overflow-wrap: anywhere; }
-  .hero__bottom { gap: 24px; }
-  .hero__actions { width: 100%; }
   .navpill { width: calc(100% - 24px); max-width: 420px; }
   .navpill__bar { gap: 4px; }
   .navpill__brand { min-height: 44px; flex-shrink: 0; }
