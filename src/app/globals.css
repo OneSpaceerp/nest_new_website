@@ -2,6 +2,7 @@
 @import "./components.css";
 @import "./stories.css";
 @import "./responsive.css";
+@import "./craft.css";
 
 /* ==========================================================================
    Design tokens — every value sampled from the reference recording.
@@ -11,16 +12,16 @@
 @theme {
   /* Neutrals. Note: no pure white, no pure black anywhere. Everything
      carries a warm bias — that is what makes the palette read as expensive. */
-  --color-ink: #221e1b;
-  --color-ink-strong: #2a2522;
-  --color-plum: #40383e;
-  --color-warm: #e0dbd8;
-  --color-card: #eee9e6;
-  --color-chip: #f0ebea;
-  --color-rail: #ccc7c4;
-  --color-cream: #f7f2ef;
-  --color-pill: #fdfbf7;
-  --color-on-dark: #d5d0cb;
+  --color-ink: #01133f;          /* Nest navy (logo plate) */
+  --color-ink-strong: #121a2e;   /* ink text, 15:1 on paper */
+  --color-plum: #01133f;          /* statement section: navy paper */
+  --color-warm: #eae2d3;          /* kraft */
+  --color-card: #fbf7ef;          /* sheet */
+  --color-chip: #f4eee3;
+  --color-rail: #d8cdba;          /* kraft edge */
+  --color-cream: #f4efe6;         /* paper */
+  --color-pill: #fffcf6;
+  --color-on-dark: #dce3f0;       /* text on navy, 14:1 */
   --color-accent: #87ab91; /* "step complete" green — semantic, not brand */
 
   /* Brand accent.
@@ -35,17 +36,17 @@
      bias and a pure black would be the one jarring note in it. This also sits
      a step below --color-ink (#221E1B), so the closing CTA card still reads
      as a raised panel against the footer rather than merging into it. */
-  --color-night: #13100f;
+  --color-night: #000b26;         /* footer: deepest navy */
 
   --color-brand: #02c8f0;
   --color-brand-ink: #016a7f;
   --color-brand-ink-hover: #015363;
 
   /* Radii — nothing on the page is sharp. */
-  --radius-sm: 20px;
-  --radius-md: 24px;
-  --radius-lg: 28px;
-  --radius-xl: 40px;
+  --radius-sm: 6px;   /* Craft: paper has crisp, barely-softened corners */
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
   --radius-full: 999px;
 
   /* Easing */
@@ -55,7 +56,7 @@
   /* Three registers. Display carries the character, body carries the reading,
      mono carries the technical labelling. */
   --font-display: var(--ff-grotesk), "Segoe UI", system-ui, sans-serif;
-  --font-sans: var(--ff-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--ff-body), system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono-stack: var(--ff-mono), ui-monospace, "Cascadia Mono",
     Menlo, Consolas, monospace;
 }
@@ -440,7 +441,7 @@ html.no-js .reveal {
 
 /* Nest's web interpretation of the Apple design foundations.
    Glass belongs to navigation; content retains solid, readable surfaces. */
-:root { --surface-border: rgb(34 30 27 / .12); --text-secondary: #625b56; }
+:root { --surface-border: rgb(1 19 63 / .12); --text-secondary: #5a6072; }
 :is(h1,h2,h3,.t-display,.t-hero,.t-statement) { text-wrap: balance; }
 :is(.t-body,.t-lead,.page__intro) { text-wrap: pretty; }
 .t-muted { color: var(--text-secondary); }
@@ -465,7 +466,6 @@ html.no-js .reveal {
 .navpill__menu { transform-origin: bottom center; }
 .navpill__menu a { border-radius: 14px; transition: background-color var(--d-fast) ease; }
 .navpill__menu a:hover { background: var(--color-card); }
-.hero__line,.hero__aside { animation-duration: 480ms; animation-delay: 80ms; }
 .field input,.field select,.field textarea { border-color: #958b84; transition: border-color var(--d-fast) ease, box-shadow var(--d-fast) ease; }
 .field :is(input,select,textarea):focus { border-color: var(--color-brand-ink); box-shadow: 0 0 0 3px rgb(1 106 127 / .12); }
 .questionnaire__step { animation: stepEnter 220ms ease-out; }

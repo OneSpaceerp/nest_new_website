@@ -5,46 +5,32 @@ import Accent from "./Accent";
 import { hero } from "@/lib/content";
 
 /**
- * Hero composition, matched to the reference frame at t=36.8s (settled state):
+ * Craft hero.
  *
- *   logo          top-left
- *   headline      bottom-left, oversized
- *   CTAs          bottom-right
+ *   left   brand, eyebrow, headline, lede, actions
+ *   right  the paper stage: the illustration mounted on a cut-corner sheet,
+ *          two offset sheets behind it, and a cyan and a navy paper strip
+ *          crossing underneath, like a model laid out on a work table.
  *
- * The bottom-centre is left to the floating navigation, which the hero
- * clears with padding rather than sharing the row with a scroll cue.
- *
- * Everything sits on a full-bleed pearlescent field. Copy is low-contrast
- * against it by design — the reference never uses hard black on the hero.
+ * The cut corners (top-left and bottom-right) come straight from the Nest
+ * logo plate, so the brand's own silhouette is the page's signature shape.
+ * The stage is decorative and adds no copy of its own.
  */
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero__bg grain">
-        <Image
-          src="/illustrations/hero-v2.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hero__image"
-        />
-      </div>
-
       <div className="hero__inner container">
-        <div className="hero__top">
-          <div className="hero__brand-stack">
+        <div className="hero__copy">
+          <div className="hero__brandrow">
             <BrandLink height={38} priority />
-            <p className="hero__top-body t-body">{hero.body}</p>
+            <p className="hero__status t-mono">
+              <span className="hero__dot" aria-hidden="true" />
+              {hero.status}
+            </p>
           </div>
 
-          <p className="hero__status t-mono">
-            <span className="hero__dot" aria-hidden="true" />
-            {hero.status}
-          </p>
-        </div>
+          <p className="t-eyebrow hero__eyebrow">{hero.eyebrow}</p>
 
-        <div className="hero__bottom">
           <h1 className="hero__headline t-hero">
             {hero.headline.map((line, i) => (
               <span
@@ -58,14 +44,33 @@ export default function Hero() {
             ))}
           </h1>
 
-          <div className="hero__aside">
-            <div className="hero__actions">
-              <Link href={hero.primary.href} className="btn btn-primary">
-                {hero.primary.label}
-              </Link>
-              <Link href={hero.secondary.href} className="btn btn-ghost">
-                {hero.secondary.label}
-              </Link>
+          <p className="hero__lede t-lead">{hero.body}</p>
+
+          <div className="hero__actions">
+            <Link href={hero.primary.href} className="btn btn-primary">
+              {hero.primary.label}
+            </Link>
+            <Link href={hero.secondary.href} className="btn btn-ghost">
+              {hero.secondary.label}
+            </Link>
+          </div>
+        </div>
+
+        <div className="hero__stage" aria-hidden="true">
+          <span className="strip strip--brand hero__strip-a" />
+          <span className="strip strip--navy hero__strip-b" />
+          <span className="hero__back hero__back--1" />
+          <span className="hero__back hero__back--2" />
+          <div className="hero__sheet sheet-cut">
+            <div className="hero__art">
+              <Image
+                src="/illustrations/hero-v2.png"
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 900px) 92vw, 52vw"
+                className="hero__image"
+              />
             </div>
           </div>
         </div>

@@ -73,7 +73,7 @@ export default function Statement() {
           card,
           { borderRadius: 0, scale: 1 },
           {
-            borderRadius: 48,
+            borderRadius: 14,
             scale: 0.86,
             ease: "none",
             scrollTrigger: {

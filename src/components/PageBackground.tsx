@@ -13,11 +13,11 @@ import { getGsap, mixHex } from "@/lib/motion";
  */
 
 const STOPS: Record<string, string> = {
-  hero: "#d3cfca",
-  plum: "#40383e",
-  warm: "#e0dbd8",
-  cream: "#f7f2ef",
-  night: "#13100f",
+  hero: "#f4efe6",
+  plum: "#01133f",
+  warm: "#eae2d3",
+  cream: "#f4efe6",
+  night: "#000b26",
 };
 
 export default function PageBackground() {

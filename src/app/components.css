@@ -22,72 +22,6 @@
   margin-block: 2rem;
 }
 
-/* ============================================================ hero ====== */
-
-.hero {
-  position: relative;
-  min-height: 100svh;
-  display: flex;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  /* Painted before WebGL takes over, and the permanent fallback if the
-     context is unavailable. */
-  background:
-    linear-gradient(122deg, #cdcac5 0%, #dcd9d2 28%, #cfccc8 52%, #e0ddd4 74%, #cbc9c5 100%);
-}
-
-.hero__canvas {
-  width: 100%;
-  height: 100%;
-}
-
-.hero__image {
-  z-index: 0;
-  object-fit: cover;
-  object-position: center;
-  filter: saturate(0.82) contrast(0.98);
-}
-
-.hero__bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(90deg, rgb(247 242 239 / 0.56) 0%, rgb(247 242 239 / 0.3) 32%, rgb(247 242 239 / 0.04) 67%);
-}
-
-.hero__inner {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* The bottom edge clears the floating navigation, so the headline and the
-     calls to action are never sitting underneath it on first load. */
-  padding-block: clamp(28px, 4vw, 52px) var(--nav-clear);
-  width: 100%;
-}
-
-.hero__top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-.hero__brand-stack { max-width: 31rem; }
-.hero__top-body {
-  max-width: 34ch;
-  margin: 1.25rem 0 0;
-  color: color-mix(in srgb, var(--color-ink-strong) 66%, transparent);
-}
-
 /* ========================================================= brand mark === */
 
 /* The cyan "nest" wordmark, used as the header brand on every route. Image
@@ -123,58 +57,11 @@
   margin-bottom: clamp(2rem, 5vw, 3.25rem);
 }
 
-.hero__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  color: color-mix(in srgb, var(--color-ink-strong) 55%, transparent);
-}
-
-.hero__dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--color-brand);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-brand) 30%, transparent);
-}
-
-.hero__bottom {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: clamp(1.5rem, 4vw, 3rem);
-}
-
-.hero__headline {
-  margin: 0;
-  color: color-mix(in srgb, var(--color-ink-strong) 88%, transparent);
-}
-
-.hero__line {
-  display: block;
-  opacity: 0;
-  transform: translateY(24px);
-  animation: heroIn 900ms var(--ease-out-expo) forwards;
-  animation-delay: calc(200ms + var(--i) * 90ms);
-}
-
 @keyframes heroIn {
   to {
     opacity: 1;
     transform: none;
   }
-}
-
-.hero__aside {
-  justify-self: end;
-  max-width: 34ch;
-  opacity: 0;
-  animation: heroIn 900ms var(--ease-out-expo) 470ms forwards;
-}
-
-.hero__body {
-  margin: 0 0 1.5rem;
-  color: color-mix(in srgb, var(--color-ink-strong) 66%, transparent);
 }
 
 .about-products { margin-top: clamp(5rem, 10vw, 9rem); }
@@ -190,31 +77,9 @@
 .about-product > p:not(.t-eyebrow) { margin: 0; line-height: 1.7; }
 .about-product .story-textlink { margin-top: auto; padding-top: 1.5rem; }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-@media (max-width: 900px) {
-  .hero__bottom {
-    grid-template-columns: 1fr;
-    align-items: start;
-    gap: 2rem;
-  }
-  .hero__aside { justify-self: start; max-width: 46ch; }
-}
-
 @media (max-width: 900px) {
   .about-products__grid { grid-template-columns: 1fr; }
   .about-product { min-height: auto; }
-}
-
-@media (max-width: 640px) {
-  /* The status line wraps into the logo at this width and adds nothing. */
-  .hero__status { display: none; }
-  .hero__actions { flex-direction: column; align-items: stretch; }
-  .hero__actions .btn { width: 100%; }
 }
 
 /* ========================================================= nav pill ===== */

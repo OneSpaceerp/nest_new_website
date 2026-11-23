@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { site } from "@/lib/content";
 import SmoothScroll from "@/components/SmoothScroll";
 import NavPill from "@/components/NavPill";
@@ -12,7 +12,7 @@ import "./globals.css";
  * Space Grotesk for display: it descends from Space Mono, so it keeps genuine
  * engineering character — squared bowls, a distinctive single-storey `g` — but
  * resolves as elegant rather than quirky at headline sizes.
- * Inter for body: neutral, high x-height, built for screen reading.
+ * Instrument Sans for body: open, warm and legible; less ubiquitous than Inter.
  * JetBrains Mono for eyebrows, labels and spec tables — the "techy" register
  * lives in the small type, which is where it belongs.
  */
@@ -23,10 +23,10 @@ const display = Space_Grotesk({
   display: "swap",
 });
 
-const body = Inter({
+const body = Instrument_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--ff-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--ff-body",
   display: "swap",
 });
 
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#e0dbd8",
+  themeColor: "#f4efe6",
   colorScheme: "light",
   // Lets the floating navigation and footer read env(safe-area-inset-*) on
   // notched phones; without it those insets resolve to 0.

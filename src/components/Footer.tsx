@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="footer__brand">
             <Link href="/" aria-label={`${site.name} — home`}>
               <Image
-                src={site.logoDark}
+                src={site.logo}
                 alt={site.name}
                 width={Math.round(76 * site.logoDarkRatio)}
                 height={76}
